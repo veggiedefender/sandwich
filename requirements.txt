@@ -6,5 +6,5 @@ wtforms
 psycopg2
 Flask-Mail
 WTForms-JSON
-gunicorn
+uwsgi
 python-dateutil
