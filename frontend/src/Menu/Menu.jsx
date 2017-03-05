@@ -66,6 +66,7 @@ var Menu = React.createClass({
             <div className="footer">
               <p>
                 <a href="http://jli.host/">jesse li</a>{" / "}
+                <a href="https://github.com/veggiedefender/sandwich/blob/master/api.md">api</a>{" / "}
                 <a href="https://github.com/veggiedefender/sandwich">source</a>{" / "}
                 <a href="https://github.com/veggiedefender/sandwich/issues/new">feedback</a>
               </p>

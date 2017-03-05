@@ -5,8 +5,21 @@ from app.emails import send_email, get_activation_link
 from app.forms import OrderForm
 from dateutil.relativedelta import relativedelta, TH
 from datetime import datetime
-import json
 from app import app, db
+
+def place_order(email, orders):
+    total = 0
+    for order in orders:
+        db.session.add(order)
+        total += order.cost
+    db.session.commit()
+    activation_link = get_activation_link(orders)
+    letter = render_template("emails/confirmation.txt",
+        orders=orders,
+        link=activation_link,
+        total=total
+    )
+    send_email("Order confirmation", [email], letter)
 
 @app.route("/complete/")
 def complete():
@@ -29,9 +42,7 @@ def items():
         "price": item.price,
         "price_half": item.price_half
     } for item in items])
-    items.headers['Access-Control-Allow-Origin'] = '*'
-    return items
-    
+    return items    
 
 @app.route("/admin/")
 def admin():
@@ -40,24 +51,13 @@ def admin():
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = OrderForm()
-    if request.method == 'POST' and form.validate():
+    if request.method == "POST" and form.validate():
         email = form.email.data
         user = User.get_or_create(email)
         orders = request.get_json()["order"]
         orders = [ Order(user, order["id"], order["in_half"], order["notes"])
                    for order in orders ]
-        total = 0
-        for order in orders:
-            db.session.add(order)
-            total += order.cost
-        db.session.commit()
-        activation_link = get_activation_link(orders)
-        letter = render_template("emails/confirmation.txt",
-            orders=orders,
-            link=activation_link,
-            total=total
-        )
-        send_email("Order confirmation", [email], letter)
+        place_order(email, orders)
         return render_template("complete.html")
     item_order = ["HAVEN SPECIALTIES", "COLD HOAGIES", "HOT HOAGIES", "FROM THE GRILL"]
     items = {

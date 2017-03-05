@@ -40,16 +40,17 @@ var ModalForm = React.createClass({
       );
     }
     return (
-      <form>
-        {checkBox}
+      <form>        
         <div className="row">
             <label htmlFor="notes">Notes</label>
             <textarea
+              autoFocus
               value={this.state.notes} onChange={this.updateNotes}
               className="u-full-width"
               placeholder="Add five slices of ham but make the third one from the left 67% transparent."
             ></textarea>
         </div>
+        {checkBox}
         <input type="button" className="button-primary" value="Submit" onClick={this.submit}/>
         {" "}
         <input type="button" value="Cancel" onClick={this.props.cancel}/>

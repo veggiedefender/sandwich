@@ -4,10 +4,13 @@ from wtforms.validators import InputRequired, Email
 from wtforms.fields.html5 import EmailField
 from app.models import User
 
+def validate_email(email):
+    return (email.endswith("@princeton.edu") or 
+            email == "jessejesse123@gmail.com")
+
 class OrderForm(FlaskForm):
     email = EmailField("email", [InputRequired(), Email()])
     recaptcha = RecaptchaField()
 
     def validate(self):
-        return (self.email.data.endswith("@princeton.edu")
-                or self.email.data == "jessejesse123@gmail.com")
+        return validate_email(self.email.data)

@@ -1,5 +1,7 @@
 # sandwich
 
+##👉[API Docs](https://github.com/veggiedefender/sandwich/blob/master/api.md)
+
 ##setup
 
 Follow [this guide](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04) to set up the nginx/uwsgi/flask stack.
@@ -13,7 +15,7 @@ This is a pretty straightforward flask app that mostly follows [this structure](
 Don't try to edit the minified code found in `app/static` or `app/templates`!
 Since this project is ***WEB SCALE*** it's using react and changes you make to the built assets won't be persisted the next time the code gets built.
 
-There's a nice [`frontend`](https://github.com/veggiedefender/sandwich/tree/master/frontend) folder containing js and jsx code which you can edit.
+However, there's a nice [`frontend`](https://github.com/veggiedefender/sandwich/tree/master/frontend) folder containing js and jsx code which you can edit.
 
 Run `npm run build` to run the 🌟javascript magic🌟 which will copy the built assets into the 
 right flask folders (aka it runs [`installToFlask.sh`](https://github.com/veggiedefender/sandwich/blob/master/frontend/installToFlask.sh)).

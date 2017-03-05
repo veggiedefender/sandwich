@@ -12,6 +12,6 @@ db = SQLAlchemy(app)
 
 mail = Mail(app)
 
-CSRFProtect(app)
+csrf_protect = CSRFProtect(app)
 
-from app import views, emails
+from app import views, api
