@@ -64,9 +64,11 @@ var Menu = React.createClass({
             )}
 
             <div className="footer">
-              <span><a href="http://jli.host/">jesse li</a></span>{" / "}
-              <span><a href="https://github.com/veggiedefender/sandwich">source</a></span>{" / "}
-              <span><a href="https://github.com/veggiedefender/sandwich/issues/new">feedback</a></span>
+              <p>
+                <a href="http://jli.host/">jesse li</a>{" / "}
+                <a href="https://github.com/veggiedefender/sandwich">source</a>{" / "}
+                <a href="https://github.com/veggiedefender/sandwich/issues/new">feedback</a>
+              </p>
             </div>
           </div>
 
