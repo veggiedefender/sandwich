@@ -2,7 +2,7 @@
 #ln -s /etc/nginx/sites-available/sandwich /etc/nginx/sites-enabled
 server {
     listen 80;
-    server_name 162.243.163.202;
+    server_name 162.243.163.202 hoagie.club;
 
     location / {
         include uwsgi_params;
