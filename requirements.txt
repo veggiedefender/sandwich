@@ -1,0 +1,10 @@
+Flask
+SQLAlchemy
+Flask-SQLAlchemy
+Flask-WTF
+wtforms
+psycopg2
+Flask-Mail
+WTForms-JSON
+gunicorn
+python-dateutil

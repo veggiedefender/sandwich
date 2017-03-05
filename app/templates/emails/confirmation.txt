@@ -1,0 +1,17 @@
+Complete your order by clicking this link:
+{{ link }}
+
+{% for order in orders %}{{ order.item.name }}
+{%- filter indent(4, true) -%}
+{%- if order.in_half %}
+In half
+{%- endif %}
+{%- if order.notes %}
+Notes: "{{ order.notes}}"
+{%- endif %}
+Cost: {{ "${:.2f}".format(order.cost) }}
+
+{% endfilter %}
+{% endfor %}
+
+SUBTOTAL: {{ "${:.2f}".format(total) }}

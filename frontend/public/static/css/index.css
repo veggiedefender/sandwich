@@ -1,0 +1,93 @@
+h3 {
+    margin: 2rem 0 0 0;
+}
+h4 {
+    margin: 2rem 0 0 0;
+}
+p {
+    margin: 0;
+}
+.cart {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px 0 #888;
+    overflow-y: auto;
+}
+#scroll {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: #fff;
+    box-shadow: 0 0 20px 0 #888;
+    padding: 16px 0 16px 0;
+    text-align: center;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #000;
+    z-index: 2;
+}
+tbody tr:hover {
+    background-color: #fafafa;
+    cursor: pointer;
+}
+.price {
+    text-align: right;
+}
+#modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 4;
+}
+.modal-content {
+    background-color: #fff;
+    margin-top: 0;
+    width: 100%;    
+    padding: 2em;
+}
+form {
+    margin: 0;
+}
+textarea {
+    resize: vertical;
+}
+
+.order:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
+#submit {
+    margin-top: 1.5rem;
+}
+
+.footer {
+    width: 100%;
+    text-align: right;
+    color: #aaa;
+    display: none;
+}
+.footer span a {
+    text-decoration: none;
+}
+
+@media (min-width: 750px) {
+    .cart {
+        position: fixed;
+        width: 30.6666666667%;
+        right: 0;
+        top: 0;
+        height: 100vh;
+    }
+    #scroll {
+        display: none;
+    }
+    .modal-content {
+        margin-top: 30vh;
+    }
+    .footer {
+        display: block;
+    }
+}

@@ -1,0 +1,14 @@
+#copy this to /etc/systemd/system/sandwich.service
+[Unit]
+Description=uWSGI sandwich
+After=network.target
+
+[Service]
+User=jesse
+Group=www-data
+WorkingDirectory=/home/jesse/sandwich
+Environment="PATH=/home/jesse/sandwich/venv/bin"
+ExecStart=/home/jesse/sandwich/venv/bin/uwsgi --ini sandwich.ini
+
+[Install]
+WantedBy=multi-user.target
