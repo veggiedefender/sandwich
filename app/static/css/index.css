@@ -67,8 +67,8 @@ textarea {
     width: 100%;
     text-align: right;
     color: #aaa;
-    display: none;
     margin-bottom: 1em;
+    display: none;
 }
 .footer span a {
     text-decoration: none;
