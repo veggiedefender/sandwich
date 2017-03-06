@@ -27,13 +27,15 @@ Send a `POST` request with a JSON that looks like this:
             "notes": "oil and mustard"
         },
         {
-            "id": 2,
-            "in_half": false,
+            "id": 2
         }
     ]
 }
 ```
-**NOTE:** `order` must be an array, and the `notes` and `in_half` properties are optional.
+**NOTES:** 
+* `order` must be an array, and the `notes` and `in_half` properties are optional.
+* `content-type` must be `application/json`. The Python `requests` module can do this automatically if you call
+`requests.post("http://hoagie.club/api/order", json={...})`. If you use cURL, you can set this with `-H "Content-Type: application/json"`
 
 It will give you back JSON that looks like this:
 ```
