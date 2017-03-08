@@ -42,6 +42,7 @@ def items():
         "price": item.price,
         "price_half": item.price_half
     } for item in items])
+    items.headers['Access-Control-Allow-Origin'] = '*'
     return items    
 
 @app.route("/admin/")

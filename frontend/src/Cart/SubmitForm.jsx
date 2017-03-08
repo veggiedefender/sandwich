@@ -39,9 +39,8 @@ var SubmitForm = React.createClass({
             if (xhr.readyState === 4 && xhr.status === 200) {
                 window.location.replace('/complete/');
             }
-        };
+        }
     }
-
   },
   render: function() {
     var items = this.props.items;
@@ -51,7 +50,7 @@ var SubmitForm = React.createClass({
     return (
       <div>
           <h4>TOTAL - ${total.toFixed(2)}</h4>
-          <form onSubmit={this.submit}>
+          <form onSubmit={this.submit} action="#" method="POST">
               <div className="row">
                   <label htmlFor="email">Email</label>
                   <input
@@ -59,6 +58,7 @@ var SubmitForm = React.createClass({
                     className="u-full-width"
                     type="email"
                     placeholder="example@princeton.edu"
+                    name="email"
                     required
                     onChange={this.updateEmail}
                   />
