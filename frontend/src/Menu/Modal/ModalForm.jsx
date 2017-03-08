@@ -47,7 +47,7 @@ var ModalForm = React.createClass({
               autoFocus
               value={this.state.notes} onChange={this.updateNotes}
               className="u-full-width"
-              placeholder="Lettuce, tomato, onion, and single pickle slice"
+              placeholder="Example: Onions, lettuce, hot sauce, and the lives of three men."
             ></textarea>
         </div>
         {checkBox}
