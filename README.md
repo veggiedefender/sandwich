@@ -25,3 +25,5 @@ right flask folders (aka it runs [`installToFlask.sh`](https://github.com/veggie
 If you want a feature, create an issue or implement it yourself. I'll accept almost any pull request if it's any good.
 
 If you're interested in maintaining this, contact me and I can give you push access.
+
+On a *completely unrelated note* here's a [PayPal donation link](https://www.paypal.me/veggiedefender/5)
