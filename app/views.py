@@ -53,10 +53,13 @@ def admin():
 @app.route("/submit", methods=["POST"])
 def submit():
     form = OrderForm()
+    for error in form.errors.items():
+        print(error)
+    import sys
+    sys.stdout.flush()
     if request.method == "POST" and form.validate():
         email = form.email.data
         if validate_email(email):
-            print("yes it is working")
             import sys
             sys.stdout.flush()
             user = User.get_or_create(email)
@@ -64,8 +67,8 @@ def submit():
             orders = [ Order(user, order["id"], order["in_half"], order["notes"])
                        for order in orders ]
             place_order(email, orders)
-            return render_template("complete.html")
-    return "error", 404
+            return jsonify({"success": True})
+    return jsonify({"success": False})
 
 @app.route("/", methods=["GET", "POST"])
 def index():

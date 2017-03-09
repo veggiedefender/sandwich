@@ -21,23 +21,30 @@ var SubmitForm = React.createClass({
       order: this.props.items
     };
     if (this.state.recaptcha !== "") {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", '/submit', true);
-      xhr.responseType = 'document';
-      xhr.overrideMimeType('text/xml');
-      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-      xhr.setRequestHeader("X-CSRFToken", document.getElementById("csrf").content);
-      xhr.send(JSON.stringify(data));
-
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            window.location.replace('/complete/');
-          } else {
-            alert("error.");
-          }
+      fetch("/submit",
+      {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "x-csrftoken": document.getElementById("csrf").content
+          },
+          credentials: 'same-origin',
+          method: "POST",
+          body: JSON.stringify(data)
+      })
+      .then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        if (json.success) {
+          window.location.replace("/complete/");
+        } else {
+          alert("Only Princeton emails are allowed!");
         }
-      }
+      })
+      .catch(function(response) {
+        alert("Error sending order. Try refreshing the page.")
+      })
+
     }
   },
   render: function() {
