@@ -56,7 +56,7 @@ var SubmitForm = React.createClass({
           <h4>TOTAL - ${total.toFixed(2)}</h4>
           <form onSubmit={this.submit} action="#" method="POST">
               <div className="row">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">Email (Princeton email required)</label>
                   <input
                     value={this.state.email}
                     className="u-full-width"
