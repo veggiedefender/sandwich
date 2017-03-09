@@ -29,7 +29,7 @@ def complete():
 def orders():
     epoch = datetime.utcnow().date() + relativedelta(weekday=TH(-1))
     #orders = Order.query.filter(db.and_(Order.timestamp >= epoch, Order.confirmed))
-    orders = Order.query.all()
+    orders = Order.query.filter(confirmed=True).all()
     total = sum([ order.cost for order in orders ])
     return render_template("orders.html", orders=orders, epoch=epoch, total=total)
 
