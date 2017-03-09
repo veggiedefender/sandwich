@@ -52,7 +52,7 @@ var ModalForm = React.createClass({
             ></textarea>
         </div>
         {checkBox}
-        <input type="button" className="button-primary" value="Submit" onClick={this.submit}/>
+        <input type="button" className="button-primary" value="Select" onClick={this.submit}/>
         {" "}
         <input type="button" value="Cancel" onClick={this.props.cancel}/>
       </form>

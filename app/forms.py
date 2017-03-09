@@ -5,7 +5,8 @@ from wtforms.fields.html5 import EmailField
 from app.models import User
 
 def validate_email(email):
-    return (email.endswith("@princeton.edu") or 
+    return (email.endswith("@princeton.edu") or
+            email.endswith(".princeton.edu") or
             email == "jessejesse123@gmail.com")
 
 class OrderForm(FlaskForm):

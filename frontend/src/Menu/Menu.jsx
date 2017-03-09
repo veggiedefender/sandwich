@@ -55,7 +55,11 @@ var Menu = React.createClass({
       <div>
         <div className="eight columns">
           <div className="container">
-            <h1><b>THUNCH</b></h1>
+            <h1>
+              <b>THUNCH</b> (
+              <a href="http://www.hoagiehaven.com/menu.pdf" target="_blank">Menu</a>
+              )
+            </h1>
             {categories.map((category, key) =>
               <div key={key}>
                 <h3>{category.name}</h3>
