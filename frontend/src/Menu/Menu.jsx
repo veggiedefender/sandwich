@@ -7,7 +7,8 @@ function splitCategories(items) {
     "HAVEN SPECIALTIES",
     "COLD HOAGIES",
     "HOT HOAGIES",
-    "FROM THE GRILL"
+    "FROM THE GRILL",
+    "SIDES"
   ];
   return renderOrder.map(category => (
     {
