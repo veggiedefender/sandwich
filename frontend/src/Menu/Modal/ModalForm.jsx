@@ -43,6 +43,7 @@ var ModalForm = React.createClass({
       <form>        
         <div className="row">
             <label htmlFor="notes">Notes</label>
+            <p className="small">Some options: lettuce, tomatoes, onions, hot peppers, mayo, ketchup, pepper, oil, vinegar, oregano, mustard</p>
             <textarea
               autoFocus
               value={this.state.notes} onChange={this.updateNotes}
