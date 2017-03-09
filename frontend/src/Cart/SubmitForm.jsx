@@ -28,7 +28,7 @@ var SubmitForm = React.createClass({
     };
     if (this.state.recaptcha !== "") {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/', true);
+        xhr.open("POST", '/submit', true);
         xhr.responseType = 'document';
         xhr.overrideMimeType('text/xml');
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
@@ -36,11 +36,13 @@ var SubmitForm = React.createClass({
         xhr.send(JSON.stringify(data));
 
         xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                window.location.replace('/complete/');
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              window.location.replace('/complete/');
             } else {
               alert("error.");
             }
+          }
         }
     }
   },

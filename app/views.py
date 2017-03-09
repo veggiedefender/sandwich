@@ -50,6 +50,23 @@ def items():
 def admin():
     pass
 
+@app.route("/submit", methods=["POST"])
+def submit():
+    form = OrderForm()
+    if request.method == "POST" and form.validate():
+        email = form.email.data
+        if validate_email(email):
+            print("yes it is working")
+            import sys
+            sys.stdout.flush()
+            user = User.get_or_create(email)
+            orders = request.get_json()["order"]
+            orders = [ Order(user, order["id"], order["in_half"], order["notes"])
+                       for order in orders ]
+            place_order(email, orders)
+            return render_template("complete.html")
+    return "error", 404
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = OrderForm()
