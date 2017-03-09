@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from datetime import datetime
 from app.models import User, Order, Item
 from app.emails import send_email, get_activation_link
-from app.forms import OrderForm
+from app.forms import OrderForm, validate_email
 from dateutil.relativedelta import relativedelta, TH
 from datetime import datetime
 from app import app, db
@@ -55,18 +55,19 @@ def index():
     form = OrderForm()
     if request.method == "POST" and form.validate():
         email = form.email.data
-        user = User.get_or_create(email)
-        orders = request.get_json()["order"]
-        orders = [ Order(user, order["id"], order["in_half"], order["notes"])
-                   for order in orders ]
-        place_order(email, orders)
-        return render_template("complete.html")
-    item_order = ["HAVEN SPECIALTIES", "COLD HOAGIES", "HOT HOAGIES", "FROM THE GRILL"]
-    items = {
-        category: split(Item.query.filter_by(category=category).all())
-        for category in item_order
-    }
-    return render_template("index.html", form=form, items=items, item_order=item_order)
+        if validate_email(email):
+            print("yes it is working")
+            import sys
+            sys.stdout.flush()
+            user = User.get_or_create(email)
+            orders = request.get_json()["order"]
+            orders = [ Order(user, order["id"], order["in_half"], order["notes"])
+                       for order in orders ]
+            place_order(email, orders)
+            return render_template("complete.html")
+        else:
+            return "error", 404
+    return render_template("index.html", form=form)
 
 def split(query):
     length = len(query)

@@ -12,6 +12,3 @@ def validate_email(email):
 class OrderForm(FlaskForm):
     email = EmailField("email", [InputRequired(), Email()])
     recaptcha = RecaptchaField()
-
-    def validate(self):
-        return validate_email(self.email.data)
