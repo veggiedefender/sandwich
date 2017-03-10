@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App"
+import App from "./App";
+
+import normalize from "./css/normalize.css";
+import skeleton from "./css/skeleton.css";
+import styles from "./css/index.css";
 
 fetch("/items/")
   .then(function(response) {
