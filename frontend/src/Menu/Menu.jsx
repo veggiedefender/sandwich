@@ -31,7 +31,7 @@ var Menu = React.createClass({
       currentItem: this.props.menu[e.currentTarget.id]
     })
   },
-  hideModal: function() {
+  hideModal: function(e) {
     this.setState({
       modalOpen: false
     });
