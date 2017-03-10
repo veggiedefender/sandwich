@@ -6,10 +6,28 @@
     <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/static/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&text=expand_more">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&text=expand_more,clear">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
     <meta id="recaptcha-key" content="{{config['RECAPTCHA_PUBLIC_KEY']}}">
     <meta id="csrf" content="{{csrf_token()}}">
+    <style>
+    .loading {
+      border: 5px solid #e6e6e6; /* Light grey */
+      border-top: 5px solid #858585; /* Blue */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
   </head>
   <body>
     <div class="row">
@@ -20,6 +38,7 @@
           <a href="https://github.com/veggiedefender/sandwich/blob/master/api.md">API</a>
           which will let you place orders programmatically.
         </noscript>
+        <div class="loading"></div>
       </div>
     </div>
   </body>
