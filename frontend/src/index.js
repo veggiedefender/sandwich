@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App"
 
-fetch("http://192.168.1.3:5000/items/")
+fetch("/items/")
   .then(function(response) {
     return response.json();
   }).then(function(json) {
