@@ -36,9 +36,11 @@ tbody tr:hover {
   text-align: right;
 }
 .modal-container {
+  top: 0;
   position: fixed;
 }
 .backdrop {
+  top: 0;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -46,6 +48,7 @@ tbody tr:hover {
   z-index: 3;
 }
 .modal-content {
+  top: 0;
   position: fixed;
   background-color: #fff;
   margin-top: 0;
