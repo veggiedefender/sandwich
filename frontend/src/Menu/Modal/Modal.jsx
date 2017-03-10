@@ -5,7 +5,7 @@ var Modal = React.createClass({
   render: function() {
     var item = this.props.item;
     return (
-      <div class="modal-container">
+      <div className="modal-container">
         <div className="backdrop" onClick={this.props.cancel}></div>
         <div className="modal-content">
           <i className="material-icons close-button" onClick={this.props.cancel}>clear</i>

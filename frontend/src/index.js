@@ -8,7 +8,7 @@ fetch("/items/")
   }).then(function(json) {
     render_app(json);
   }).catch(function(ex) {
-    console.log(ex);
+    alert("Failed to get menu.");
   });
 
 function render_app(json) {
