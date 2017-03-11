@@ -11,4 +11,7 @@ server {
     location /static {
         alias /home/jesse/sandwich/app/static;
     }
+    location /robots.txt {
+        alias /home/jesse/sandwich/robots.txt;
+    }
 }
