@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                     {% for order in orders %}
-                    <tr>
+                    <tr title="{{ order.timestamp }}">
                         <td class="hide-print">{{ order.id }}</td>
                         <td class="hide-screen"> {{ order.user.email.split("@")[0] }} </td>
                         <td class="hide-print">{{ order.user.email }}</td>
