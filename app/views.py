@@ -73,7 +73,7 @@ def submit():
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    response = Response(render_template("index.html"))
+    response = Response(render_template("index.html", title="THUNCH"))
 
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Pragma"] = "no-cache"

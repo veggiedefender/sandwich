@@ -57,7 +57,7 @@ var Menu = React.createClass({
         <div className="eight columns">
           <div className="container">
             <h1>
-              <b>THUNCH</b> (
+              <b>{document.title}</b> (
               <a href="http://www.hoagiehaven.com/menu.pdf" target="_blank">MENU</a>
               )
             </h1>
