@@ -4,7 +4,7 @@ from app.models import User, Order, Item
 from app.emails import send_email, get_activation_link
 from app.forms import OrderForm, validate_email
 from dateutil.relativedelta import relativedelta, TH
-from datetime import datetime
+from datetime import datetime, time
 from app import app, db
 
 def place_order(email, orders):
@@ -27,8 +27,8 @@ def complete():
 
 @app.route("/orders/")
 def orders():
-    epoch = datetime.utcnow().date() + relativedelta(weekday=TH(-1))
-    #orders = Order.query.filter(db.and_(Order.timestamp >= epoch, Order.confirmed))
+    epoch = datetime.now().date() - relativedelta(days=1) + relativedelta(weekday=TH(-1))
+    epoch = datetime.combine(epoch, time.max)
     orders = Order.query.filter_by(confirmed=True).all()
     total = sum([ order.cost for order in orders ])
     return render_template("orders.html", orders=orders, epoch=epoch, total=total)

@@ -35,7 +35,7 @@ class Order(db.Model):
 
     def __init__(self, user, item_id, in_half, notes=None):
         with db.session.no_autoflush:
-            self.timestamp = datetime.utcnow()
+            self.timestamp = datetime.now()
             self.user = user
             self.item_id = item_id
             self.item = Item.query.get(item_id)
