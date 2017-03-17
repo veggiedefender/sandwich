@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request, Response
 from datetime import datetime
 from app.models import User, Order, Item
 from app.emails import send_email, get_activation_link
-from app.forms import OrderForm, validate_email
+from app.forms import OrderForm, AdminForm, validate_email
 from dateutil.relativedelta import relativedelta, TH
 from datetime import datetime, time
 from app import app, db
@@ -49,7 +49,12 @@ def items():
 
 @app.route("/admin/")
 def admin():
-    pass
+    response = Response(render_template("admin.html"))
+
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = 0
+    return response
 
 @app.route("/submit", methods=["POST"])
 def submit():
@@ -78,7 +83,7 @@ def index():
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = 0
-    return response    
+    return response
 
 def split(query):
     length = len(query)
