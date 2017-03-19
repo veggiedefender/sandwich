@@ -37,7 +37,7 @@ def orders():
 def orders_all():
     epoch = datetime.now().date() - relativedelta(days=1) + relativedelta(weekday=TH(-1))
     epoch = datetime.combine(epoch, time.max)
-    orders = Order.query.all()
+    orders = Order.query.filter_by(confirmed=True).all()
     total = sum([ order.cost for order in orders ])
     return render_template("orders.html", orders=orders, epoch=epoch, total=total)
 
