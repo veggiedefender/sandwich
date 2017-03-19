@@ -1,6 +1,7 @@
 __pycache__/
 venv/
 config.py
+credentials.json
 
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -8,10 +9,10 @@ config.py
 /frontend/*/node_modules
 
 # testing
-/frontend/coverage
+/frontend/*/coverage
 
 # production
-/frontend/build
+/frontend/*/build
 
 # misc
 .DS_Store
