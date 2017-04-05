@@ -33,35 +33,25 @@
     <body>
         <div class="container">
             <h1 class="hide-print">Orders since {{ epoch.strftime('%A, %-m/%-d/%Y') }}</h1>
-            <h3 class="hide-print">Total cost: ${{ "{:.2f}".format(total) }}</h3>
+            <h3>Estimated total cost: ${{ "{:.2f}".format(total) }}</h3>
             <table class="u-full-width">
                 <thead>
                     <tr>
                         <th class="hide-print">ID</th>
-                        <th class="hide-screen">Name</th>
+                        <th class="hide-screen">Name to put on sandwich</th>
                         <th class="hide-print">Email</th>
                         <th>Item</th>
-                        <th>In Half</th>
-                        <th>Notes</th>
-                        <th class="hide-print">Cost</th>
+                        <th class="cost">Cost</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for order in orders %}
                     <tr title="{{ order.timestamp }}">
                         <td class="hide-print">{{ order.id }}</td>
+                        <td class="hide-print"> {{order.user.email}} </td>
                         <td class="hide-screen"> {{ order.user.email.split("@")[0] }} </td>
-                        <td class="hide-print">{{ order.user.email }}</td>
-                        <td>{{ order.item.name }}</td>
-                        <td>
-                            {% if order.in_half %}
-                            <b>Yes</b>
-                            {% else %}
-                            No
-                            {% endif %}
-                        </td>
-                        <td>{{ order.notes }}</td>
-                        <td class="cost hide-print">{{ "{:.2f}".format(order.cost) }}</td>
+                        <td>{{ order.stringify() }}</td>
+                        <td class="cost">{{ "{:.2f}".format(order.cost) }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

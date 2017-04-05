@@ -6,13 +6,13 @@ credentials.json
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/frontend/*/node_modules
+/frontend/node_modules
 
 # testing
-/frontend/*/coverage
+/frontend/coverage
 
 # production
-/frontend/*/build
+/frontend/build
 
 # misc
 .DS_Store

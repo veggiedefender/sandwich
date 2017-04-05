@@ -1,6 +1,6 @@
-#Initialize all menu items
-#IDs are explicitly assigned for consistency
-#across migrations and edits
+# Initialize all menu items
+# IDs are explicitly assigned for consistency
+# across migrations and edits
 
 from app import db
 from app.models import Item

@@ -1,9 +1,10 @@
 from datetime import datetime
 from app import db
 
+
 class User(db.Model):
     __tablename__ = "users"
-    #basic user info
+    # basic user info
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, index=True, nullable=False, unique=True)
     orders = db.relationship("Order", backref="user", lazy="dynamic")
@@ -17,6 +18,7 @@ class User(db.Model):
             db.session.commit()
         return user
 
+
 class Order(db.Model):
     __tablename__ = "orders"
     id = db.Column(db.Integer, primary_key=True)
@@ -27,9 +29,10 @@ class Order(db.Model):
     notes = db.Column(db.String, index=True, nullable=True)
     cost = db.Column(db.Float, index=True, nullable=False)
 
-    user_id =   db.Column(db.Integer, db.ForeignKey("users.id"))
-    
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
     confirmed = db.Column(db.Boolean, index=True, default=False)
+
     def confirm(self):
         self.confirmed = True
 
@@ -50,6 +53,12 @@ class Order(db.Model):
             return self.item.price_half
         else:
             return self.item.price
+
+    def stringify(self):
+        in_half = " cut in half" if self.in_half else ""
+        notes = " with %s" % self.notes if self.notes else ""
+        return "%s%s%s" % (self.item.name, in_half, notes)
+
 
 class Item(db.Model):
     __tablename__ = "items"
